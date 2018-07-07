@@ -1,6 +1,0 @@
-.idea
-node_modules
-*.log
-lib
-coverage
-example/dist

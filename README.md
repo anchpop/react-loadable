@@ -37,21 +37,16 @@ export default class App extends React.Component {
 
 ## Users
 
-- [Analog.Cafe](https://www.analog.cafe)
-- [Appbase.io](https://github.com/appbaseio/reactivesearch)
 - [Atlassian](https://www.atlassian.com/)
 - [Cloudflare](https://www.cloudflare.com)
 - [Curio](https://www.curio.org)
-- [Dresez](https://dresez.pk/)
 - [Flyhomes](https://flyhomes.com)
-- [Gogo](https://gogoair.com)
 - [MediaTek MCS-Lite](https://github.com/MCS-Lite)
 - [Snipit](https://snipit.io)
 - [Spectrum.chat](https://spectrum.chat)
 - [Talentpair](https://talentpair.com)
 - [Tinder](https://tinder.com/)
 - [Unsplash](https://unsplash.com/)
-- [Wave](https://waveapps.com/)
 
 > _If your company or project is using React Loadable, please open a PR and add
 > yourself to this list (in alphabetical order please)_
@@ -225,7 +220,7 @@ couple different props.
 
 When your [`loader`](optsloader) fails, your [loading component](#loadingcomponent)
 will receive an [`error`](propserror) prop which will be an `Error` object (otherwise it
-will be `null`).
+will be `false`).
 
 ```js
 function Loading(props) {
@@ -597,8 +592,6 @@ export default {
 }
 ```
 
-_Notice: As of Webpack 4 the CommonsChunkPlugin has been removed and the manifest doesn't need to be extracted anymore._
-
 ```js
 let bundles = getBundles(stats, modules);
 
@@ -611,9 +604,6 @@ res.send(`
       <script src="/dist/manifest.js"></script>
       ${bundles.map(bundle => {
         return `<script src="/dist/${bundle.file}"></script>`
-        // alternatively if you are using publicPath option in webpack config
-        // you can use the publicPath value from bundle, e.g:
-        // return `<script src="${bundle.publicPath}"></script>`
       }).join('\n')}
       <script src="/dist/main.js"></script>
     </body>
@@ -873,9 +863,8 @@ Loading({
 
 #### `props.error`
 
-An `Error` object passed to [`LoadingComponent`](#loadingcomponent) when the
-[`loader`](#optsloader) has failed. When there is no error, `null` is
-passed.
+A boolean prop passed to [`LoadingComponent`](#loadingcomponent) when the
+[`loader`](#optsloader) has failed.
 
 ```js
 function LoadingComponent(props) {
