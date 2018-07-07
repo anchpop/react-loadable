@@ -13,8 +13,8 @@
   ],
   "scripts": {
     "test": "jest --coverage",
-    "build": "babel src -d lib",
-    "start": "yarn build && webpack && babel-node example/server.js",
+    "build": "yarn babel src -d lib",
+    "start": "yarn build && yarn webpack && yarn babel-node example/server.js",
     "prepublish": "yarn build"
   },
   "dependencies": {
